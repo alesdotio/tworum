@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block main %}
+	<a href="{% url thread_add %}" class="btn btn-primary">new thread</a>
+	<p></p>
+	<div class="well">
+		<ul class="nav nav-list">
+			{% for thread in thread_list %}
+				<li><a href="{% url thread_detail thread.id %}">{{ thread }}</a></li>
+			{% empty %}
+				<li>No threads yet :(</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

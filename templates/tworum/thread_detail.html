@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block main %}
+	<h3>{{ thread }}
+		<a href="{% url post_add thread.id %}" class="btn btn-primary">reply</a></h3>
+	<p>
+	<div class="well">
+		{% for post in thread.posts.all %}
+			<p><i class="icon icon-user"></i>{{ post.author }}:</p>
+			{% if post.image %}<p><img src="{{ post.image.url }}" alt="" /></p>{% endif %}
+			<p>{{ post.content|linebreaksbr }}</p>
+			<hr />
+		{% empty %}
+			<p>No posts yet :(</p>
+		{% endfor %}
+	</div>
+{% endblock %}
